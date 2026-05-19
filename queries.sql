@@ -60,13 +60,15 @@ GROUP BY Position_Clean
 ORDER BY avg_goals_per90 DESC;
 
 -- Players overperforming vs xG (min 500 minutes, attackers only)
+-- Note: xG in dataset is per 90 minutes, so we calculate season total first
 SELECT 
     Name,
     Club,
     Position,
     Goals,
-    ROUND(xG, 2) AS expected_goals,
-    ROUND(Goals - xG, 2) AS xG_diff
+    Mins,
+    ROUND(xG * Mins / 90, 2) AS xG_total,
+    ROUND(Goals - (xG * Mins / 90), 2) AS xG_diff
 FROM EPL_20_21
 WHERE Mins >= 500
     AND xG > 0

@@ -41,10 +41,21 @@ Contains: player stats including goals, assists, minutes played, pass accuracy, 
 | GK | 0.001 | 0.001 | 69.7% |
 
 ### 4. xG Analysis — Who Overperformed?
-- **Harry Kane** scored 22.4 goals above his xG — exceptional finisher
-- **Mohamed Salah** overperformed by +21.39
-- Players with low xG_diff had fewer minutes or were in poor form
 
+> Note: xG in this dataset is per 90 minutes. Season total was calculated as:
+> `xG_total = xG × Minutes / 90`
+
+| Player | Goals | xG Total | Difference |
+|---|---|---|---|
+| Son Heung-min | 17 | 10.38 | +6.62 |
+| Gareth Bale | 11 | 5.32 | +5.68 |
+| İlkay Gündoğan | 13 | 9.02 | +3.98 |
+| Timo Werner | 6 | 11.85 | -5.85 |
+| Neal Maupay | 8 | 12.84 | -4.84 |
+
+- **Son Heung-min** was the biggest overperformer — scored 6.62 goals above xG
+- **Timo Werner** was the biggest underperformer (-5.85) — known for missing chances at Chelsea, confirmed by data
+- **Note on methodology:** xG values were per 90 minutes in raw data and required recalculation
 ---
 
 ## How to Run
