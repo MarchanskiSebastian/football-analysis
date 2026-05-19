@@ -19,16 +19,17 @@ Contains: player stats including goals, assists, minutes played, pass accuracy, 
 ## Key Findings
 
 ### 1. Top Performers
-| Player          | Club              | Goals | Assists | Performance Index |
-| Harry Kane      | Tottenham Hotspur | 23    | 14      | 126.51            |
-| Mohamed Salah   | Liverpool FC      | 22    | 5       | 106.32            |
-| Bruno Fernandes | Manchester United | 18    | 12      | 100.46            |
-| Son Heung-min   | Tottenham Hotspur | 17    | 10      | 95.67             |
-| Patrick Bamford | Leeds United      | 17    | 7       | 88.13             |
+| Player | Club | Goals | Assists | Performance Index |
+|---|---|---|---|---|
+| Harry Kane | Tottenham Hotspur | 23 | 14 | 126.51 |
+| Mohamed Salah | Liverpool FC | 22 | 5 | 106.32 |
+| Bruno Fernandes | Manchester United | 18 | 12 | 100.46 |
+| Son Heung-min | Tottenham Hotspur | 17 | 10 | 95.67 |
+| Patrick Bamford | Leeds United | 17 | 7 | 88.13 |
 
 ### 2. Club Dominance
-- Manchester City ranked #1 in avg Performance Index (26.61) with 82 total goals
-- Sheffield United ranked last — relegated that season, confirmed by data
+- **Manchester City** ranked #1 in avg Performance Index (26.61) with 82 total goals
+- **Sheffield United** ranked last — relegated that season, confirmed by data
 - Strong correlation between total goals and total assists across all clubs
 
 ### 3. Performance by Position
@@ -40,9 +41,11 @@ Contains: player stats including goals, assists, minutes played, pass accuracy, 
 | GK | 0.001 | 0.001 | 69.7% |
 
 ### 4. xG Analysis — Who Overperformed?
-- Harry Kane scored 22.4 goals above his xG — exceptional finisher
-- Mohamed Salah overperformed by +21.39
+- **Harry Kane** scored 22.4 goals above his xG — exceptional finisher
+- **Mohamed Salah** overperformed by +21.39
 - Players with low xG_diff had fewer minutes or were in poor form
+
+---
 
 ## How to Run
 1. Download dataset from Kaggle link above
