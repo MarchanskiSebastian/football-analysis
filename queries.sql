@@ -41,18 +41,16 @@ WHERE Mins >= 90
 GROUP BY Club
 ORDER BY avg_performance_index DESC;
 
--- Performance by position (primary position only)
+-- Performance by position (first listed position, e.g. "FW,MF" -> FW)
+-- Per-90 values rounded to 2 decimals before averaging, same as the notebook
 SELECT 
     CASE 
-        WHEN Position LIKE '%GK%' THEN 'GK'
-        WHEN Position LIKE '%DF%' THEN 'DF'
-        WHEN Position LIKE '%MF%' THEN 'MF'
-        WHEN Position LIKE '%FW%' THEN 'FW'
-        ELSE 'Other'
+        WHEN instr(Position, ',') > 0 THEN substr(Position, 1, instr(Position, ',') - 1)
+        ELSE Position
     END AS Position_Clean,
     COUNT(*) AS player_count,
-    ROUND(AVG(CAST(Goals AS FLOAT) / Mins * 90), 3) AS avg_goals_per90,
-    ROUND(AVG(CAST(Assists AS FLOAT) / Mins * 90), 3) AS avg_assists_per90,
+    ROUND(AVG(ROUND(CAST(Goals AS FLOAT) / Mins * 90, 2)), 3) AS avg_goals_per90,
+    ROUND(AVG(ROUND(CAST(Assists AS FLOAT) / Mins * 90, 2)), 3) AS avg_assists_per90,
     ROUND(AVG(Perc_Passes_Completed), 1) AS avg_pass_accuracy
 FROM EPL_20_21
 WHERE Mins >= 90
@@ -74,4 +72,20 @@ WHERE Mins >= 500
     AND xG > 0
     AND (Position LIKE '%FW%' OR Position LIKE '%MF%')
 ORDER BY xG_diff DESC
+LIMIT 10;
+
+-- Players underperforming vs xG (same filters)
+SELECT 
+    Name,
+    Club,
+    Position,
+    Goals,
+    Mins,
+    ROUND(xG * Mins / 90, 2) AS xG_total,
+    ROUND(Goals - (xG * Mins / 90), 2) AS xG_diff
+FROM EPL_20_21
+WHERE Mins >= 500
+    AND xG > 0
+    AND (Position LIKE '%FW%' OR Position LIKE '%MF%')
+ORDER BY xG_diff ASC
 LIMIT 10;
